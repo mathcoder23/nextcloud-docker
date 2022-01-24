@@ -4,7 +4,7 @@ services:
   mariadb: 
     image: mariadb 
     restart: unless-stopped 
-    expose: 
+    ports: 
      - "11012:3306"
     volumes:
      - ./mariadb:/var/lib/mysql
@@ -19,7 +19,7 @@ services:
   redis:
     image: redis
     restart: unless-stopped
-    expose:
+    ports:
      - "11011:6379"
     volumes:
      - ./cache:/data
@@ -28,7 +28,7 @@ services:
   nextcloud:
     image: nextcloud:fpm
     restart: unless-stopped
-    expose:
+    ports:
      - "11010:9000"
     volumes:
      - ./nextcloud/html:/var/www/html
