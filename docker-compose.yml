@@ -5,9 +5,9 @@ services:
     image: mariadb 
     restart: unless-stopped 
     expose: 
-     - "3306"
+     - "11012:3306"
     volumes:
-     - ./db:/var/lib/mysql
+     - ./mariadb:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: Msql_1&2
       MYSQL_DATABASE: nextcloud
@@ -20,7 +20,7 @@ services:
     image: redis
     restart: unless-stopped
     expose:
-     - "6379"
+     - "11011:6379"
     volumes:
      - ./cache:/data
     command: redis-server --requirepass 'redis_password'
@@ -29,7 +29,7 @@ services:
     image: nextcloud:fpm
     restart: unless-stopped
     expose:
-     - "9000"
+     - "11010:9000"
     volumes:
      - ./nextcloud/html:/var/www/html
      - ./nextcloud/data:/var/www/html/data
